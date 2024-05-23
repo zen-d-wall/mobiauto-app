@@ -1,7 +1,4 @@
-interface Brand {
-  codigo: string;
-  nome: string;
-}
+import SelectSmall from "@/components/dropdown";
 
 async function getData() {
   'use server';
@@ -21,12 +18,8 @@ export default async function Page() {
   console.log(data)
 
   return (
-    <div>
-      {data.map((brand: Brand, index: number) => (
-        <div key={index}>
-          Código: {brand.codigo}, Nome: {brand.nome}
-      </div>
-      ))}
+    <div className="h-full flex justify-center items-center bg-slate-600">
+      <SelectSmall brands={data} category="Marca"/>
     </div>
   )
 }
