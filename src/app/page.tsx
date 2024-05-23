@@ -18,8 +18,11 @@ export default async function Page() {
   console.log(data)
 
   return (
-    <div className="h-full flex justify-center items-center bg-slate-600">
-      <SelectSmall brands={data} category="Marca"/>
+    <div className="h-full flex flex-col justify-center items-center bg-purple-50">
+      <div className="w-full font-black text-gray-700 text-4xl text-center m-1">Tabela Fipe</div>
+      <div className="w-full font-bold text-gray-700 text-2xl text-center mb-4 mt-1">Consulte o valor de um veículo de forma gratuita</div>
+      <SelectSmall data={[data]} category="Marca" />
     </div>
+
   )
 }

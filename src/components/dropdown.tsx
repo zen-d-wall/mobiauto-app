@@ -7,30 +7,32 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Brand, Categories } from '@/types/database.types';
 
-export default function SelectSmall(props: {brands: Brand[], category: Categories}) {
-  const [age, setAge] = React.useState('');
+export default function SelectSmall(props: { data: Brand[] | [], category: Categories }) {
+  const [data, setData] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setData(event.target.value);
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">{props.category}</InputLabel>
-      <Select
-        labelId="demo-select-small-label"
-        id="demo-select-small"
-        value={age}
-        label="Age"
-        onChange={handleChange}
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        {props.brands.map((brand: Brand) => {
+    <div className='flex h-2/5 w-2/6 bg-white justify-center items-center border-r-2 border-l-2 border-b-4'>
+      <FormControl sx={{ m: 1, minWidth: 120, width: 400 }} size="small" disabled={!props.data.length && true}>
+        <InputLabel id="dropdown-label">{props.category}</InputLabel>
+        <Select
+          labelId="dropdown-label"
+          id="dropdown"
+          value={data}
+          label={props.category}
+          onChange={handleChange}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {props.data.map((brand: Brand) => {
             return <MenuItem value={brand.codigo}>{brand.nome}</MenuItem>
-        })}
-      </Select>
-    </FormControl>
+          })}
+        </Select>
+      </FormControl>
+    </div>
   );
 }
