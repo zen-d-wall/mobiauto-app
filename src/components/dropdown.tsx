@@ -5,16 +5,16 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Brand, Categories } from '@/types/database.types';
-import { useUserPreferences } from '@/context/userPreferences';
 import { useEffect, useState } from 'react';
 import { getBrandData } from '@/utils/requests';
-import { getRightQuery, recordContext } from '@/utils/handlers';
+import { getRightQuery, useRecordContext } from '@/utils/handlers';
 
 export default function SelectSmall(props: { category: Categories }) {
   const [brandData, setBrandData] = useState([])
   const [data, setData] = useState('')
 
   const queryParams = getRightQuery(props.category)
+  const recordContext = useRecordContext();
 
   async function getRequestData() {
     setBrandData(await getBrandData(queryParams))
@@ -22,7 +22,7 @@ export default function SelectSmall(props: { category: Categories }) {
 
   useEffect(() => {
     getRequestData();
-  }, [])
+  }, [data])
 
   const handleChange = (event: SelectChangeEvent) => {
     setData(event.target.value);
