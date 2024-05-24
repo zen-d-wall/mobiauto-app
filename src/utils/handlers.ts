@@ -30,7 +30,6 @@ export function getRightQuery(category: Categories){
     if(category === 'marcas'){
         return params[category];
     }
-
     else if(brand === ""){
         return ""
     }

@@ -9,8 +9,6 @@ export default function UserPreferencesProvider({ children }: any) {
     const [model, setModel] = useState<string>("")
     const [year, setYear] = useState<string>("")
 
-    console.log('passou aqui')
-
     return (
         <UserPreferenceContext.Provider
             value={{
