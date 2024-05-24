@@ -6,13 +6,26 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Brand, Categories } from '@/types/database.types';
+import { useUserPreferences } from '@/context/userPreferences';
 
 export default function SelectSmall(props: { data: Brand[] | [], category: Categories }) {
   const [data, setData] = React.useState('');
 
+  const { brand, setBrand } = useUserPreferences();
+
+  const params = {
+    modelos: `${brand}/modelos`,
+    anos: `${brand}/anos`}
+
+  const genres = {
+    marcas: setBrand
+  }
+
+
   const handleChange = (event: SelectChangeEvent) => {
     setData(event.target.value);
   };
+
 
   return (
     <div className='flex h-2/5 w-2/6 bg-white justify-center items-center border-r-2 border-l-2 border-b-4'>

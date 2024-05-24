@@ -1,0 +1,8 @@
+export interface UserPreferencesContext {
+    brand: string;
+    setBrand: React.Dispatch<React.SetStateAction<string>>;
+    model: string;
+    setModel: React.Dispatch<React.SetStateAction<string>>;
+    year: string;
+    setYear: React.Dispatch<React.SetStateAction<string>>;
+}

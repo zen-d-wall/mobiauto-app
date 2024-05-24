@@ -3,4 +3,4 @@ export interface Brand {
     nome: string;
   }
 
-export type Categories = 'Marca' | 'Modelo' | 'Ano';
+export type Categories = 'marcas' | 'modelos' | 'anos';
