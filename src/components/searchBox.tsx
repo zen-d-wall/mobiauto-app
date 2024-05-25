@@ -1,9 +1,9 @@
+'use client'
+
 import { useContext, useEffect, useState } from "react";
 import SelectSmall from "./dropdown";
-import { getRightQuery, useRecordContext } from "@/utils/handlers";
-import { getBrandData } from "@/utils/requests";
-import { Brand } from "@/types/database.types";
 import { UserPreferenceContext } from "@/context/userPreferences";
+import SearchButton from "./searchButton";
 
 export default function SearchBox() {
     const [brandKey, setBrandKey] = useState<number>(0)
@@ -36,6 +36,7 @@ export default function SearchBox() {
                 <div key={model}>
                     <SelectSmall category="anos" />
                 </div>
+                <SearchButton label="Consultar preço"/>
             </div>
         </div>
     )
