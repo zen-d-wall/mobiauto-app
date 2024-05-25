@@ -1,8 +1,7 @@
-import { Categories } from "@/types/database.types"
 
 export async function getBrandData(queryParams: any) {
 
-  if(queryParams === ""){
+  if (queryParams === "") {
     return []
   }
 
