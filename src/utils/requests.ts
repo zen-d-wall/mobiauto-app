@@ -1,5 +1,5 @@
 
-export async function getBrandData(queryParams: any) {
+export async function getBrandData(queryParams: string) {
 
   if (queryParams === "") {
     return []

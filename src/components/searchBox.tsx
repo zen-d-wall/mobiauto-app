@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext, useEffect, useState } from "react";
-import SelectSmall from "./dropdown";
+import Dropdown from "./dropdown";
 import { UserPreferenceContext } from "@/context/userPreferences";
 import SearchButton from "./searchButton";
 
@@ -28,13 +28,13 @@ export default function SearchBox() {
             <div className="w-full font-bold text-gray-700 text-2xl text-center mb-4 mt-1">Consulte o valor de um veículo de forma gratuita</div>
             <div className='flex flex-col h-2/5 w-11/12 bg-white justify-center items-center border-r-2 border-l-2 border-b-4'>
                 <div>
-                    <SelectSmall category="marcas" />
+                    <Dropdown category="marcas" />
                 </div>
                 <div key={brandKey}>
-                    <SelectSmall category="modelos" />
+                    <Dropdown category="modelos" />
                 </div>
                 <div key={model}>
-                    <SelectSmall category="anos" />
+                    <Dropdown category="anos" />
                 </div>
                 <SearchButton label="Consultar preço"/>
             </div>

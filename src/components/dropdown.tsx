@@ -4,15 +4,15 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Brand, Categories } from '@/types/database.types';
+import { Brand, Car, Categories } from '@/types/database.types';
 import { useEffect, useState } from 'react';
 import { getBrandData } from '@/utils/requests';
 import { getRightQuery, useRecordContext } from '@/utils/handlers';
 
-export default function SelectSmall(props: { category: Categories }) {
+export default function Dropdown(props: { category: Categories }) {
   const [data, setData] = useState<string>('')
   const [key, setKey] = useState<number>(0)
-  const [brandData, setBrandData] = useState<any>([])
+  const [brandData, setBrandData] = useState<Brand[]>([])
 
   const recordContext = useRecordContext();
   const queryParams = getRightQuery(props.category)
@@ -45,6 +45,7 @@ export default function SelectSmall(props: { category: Categories }) {
         <Select
           labelId="dropdown-label"
           id="dropdown"
+          data-testid="dropdown-select"
           value={data}
           label={props.category}
           onChange={handleChange}

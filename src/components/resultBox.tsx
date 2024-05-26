@@ -7,9 +7,6 @@ export default function ResultBox() {
 
     const { car } = useContext(UserPreferenceContext);
 
-    console.log('car')
-    console.log(car)
-
     return (
         <div className="h-full flex flex-col justify-center items-center">
             <div className='flex flex-col h-2/5 w-11/12 bg-resultbg justify-center items-center border-r-2 border-l-2 border-b-4'>

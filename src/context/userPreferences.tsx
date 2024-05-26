@@ -1,6 +1,6 @@
 import { UserPreferencesContext } from "@/types/context.types";
-import { Brand, Car } from "@/types/database.types";
-import { createContext, useContext, useState } from "react";
+import { Car } from "@/types/database.types";
+import { createContext, useState } from "react";
 
 export const UserPreferenceContext = createContext({} as UserPreferencesContext);
 
@@ -27,8 +27,3 @@ export default function UserPreferencesProvider({ children }: any) {
         </UserPreferenceContext.Provider>
     );
 }
-
-// export function useUserPreferences() {
-//     const { brand, setBrand, model, setModel, year, setYear } = useContext(UserPreferenceContext);
-//     return { brand, setBrand, model, setModel, year, setYear };
-// }
