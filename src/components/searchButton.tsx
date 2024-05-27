@@ -1,16 +1,16 @@
 import { UserPreferenceContext } from '@/context/userPreferences';
 import { buttonTheme } from '@/utils/mui-styling';
-import { getBrandData } from '@/utils/requests';
+import { getVehicleData } from '@/api/service';
 import { ThemeProvider } from '@mui/material';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 export default function SearchButton(props: { label: string }) {
-    const { brand, model, year, setCar, car } = useContext(UserPreferenceContext);
+    const { brand, model, year, setCar } = useContext(UserPreferenceContext);
 
     async function requestData(queryParams: string) {
-        const response = await getBrandData(queryParams);
+        const response = await getVehicleData(queryParams);
         setCar(response);
     }
 
@@ -25,7 +25,7 @@ export default function SearchButton(props: { label: string }) {
             <Button variant="contained" onClick={() => handleOnClick()} color="violet" disabled={year ? false : true}>
                 <Link href="/result">
                     <div className=''>
-                        Consultar Preço
+                        {props.label}
                     </div>
                 </Link>
             </Button>

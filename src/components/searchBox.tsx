@@ -33,10 +33,12 @@ export default function SearchBox() {
                 <div key={brandKey}>
                     <Dropdown category="modelos" />
                 </div>
-                <div key={model}>
-                    <Dropdown category="anos" />
-                </div>
-                <SearchButton label="Consultar preço"/>
+                {model && (
+                    <div key={model}>
+                        <Dropdown category="anos" />
+                    </div>
+                )}
+                <SearchButton label="Consultar preço" />
             </div>
         </div>
     )

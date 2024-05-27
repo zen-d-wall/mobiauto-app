@@ -6,13 +6,13 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Brand, Car, Categories } from '@/types/database.types';
 import { useEffect, useState } from 'react';
-import { getBrandData } from '@/utils/requests';
+import { getVehicleData } from '@/api/service';
 import { getRightQuery, useRecordContext } from '@/utils/handlers';
 
 export default function Dropdown(props: { category: Categories }) {
   const [data, setData] = useState<string>('')
   const [key, setKey] = useState<number>(0)
-  const [brandData, setBrandData] = useState<Brand[]>([])
+  const [vehicleData, setVehicleData] = useState<Brand[]>([])
 
   const recordContext = useRecordContext();
   const queryParams = getRightQuery(props.category)
@@ -20,11 +20,11 @@ export default function Dropdown(props: { category: Categories }) {
   async function getRequestData() {
 
     if (props.category === 'modelos') {
-      const response = await getBrandData(queryParams);
-      setBrandData(response.modelos ? response.modelos : [])
+      const response = await getVehicleData(queryParams);
+      setVehicleData(response.modelos ? response.modelos : [])
     }
     else {
-      setBrandData(await getBrandData(queryParams))
+      setVehicleData(await getVehicleData(queryParams))
     }
   }
 
@@ -40,7 +40,7 @@ export default function Dropdown(props: { category: Categories }) {
 
   return (
     <div key={key}>
-      <FormControl sx={{ m: 1, minWidth: 120, width: 400 }} size="small" disabled={!brandData.length && true}>
+      <FormControl sx={{ m: 1, minWidth: 120, width: 400 }} size="small" disabled={!vehicleData.length && true}>
         <InputLabel id="dropdown-label">{props.category}</InputLabel>
         <Select
           labelId="dropdown-label"
@@ -53,7 +53,7 @@ export default function Dropdown(props: { category: Categories }) {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {brandData.map((brand: Brand) => {
+          {vehicleData.map((brand: Brand) => {
             return <MenuItem value={brand.codigo}>{brand.nome}</MenuItem>
           })}
         </Select>
