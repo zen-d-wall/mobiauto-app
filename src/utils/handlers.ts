@@ -7,11 +7,11 @@ export function useRecordContext() {
     const { setBrand, setModel, setYear } = useContext(UserPreferenceContext);
 
     const recordContext = (category: Categories, value: string) => {
-        if (category === 'marcas') {
+        if (category === 'Marca') {
             setBrand(value);
-        } else if (category === 'modelos') {
+        } else if (category === 'Modelo') {
             setModel(value);
-        } else if (category === 'anos') {
+        } else if (category === 'Ano') {
             setYear(value);
         }
     };
@@ -23,18 +23,18 @@ export function getRightQuery(category: Categories) {
     const { brand, model } = useContext(UserPreferenceContext)
 
     const params = {
-        marcas: 'marcas',
-        modelos: `marcas/${brand}/modelos`,
-        anos: `marcas/${brand}/modelos/${model}/anos`
+        Marca: 'marcas',
+        Modelo: `marcas/${brand}/modelos`,
+        Ano: `marcas/${brand}/modelos/${model}/anos`
     }
 
-    if (category === 'marcas') {
+    if (category === 'Marca') {
         return params[category];
     }
     else if (brand === "") {
         return ""
     }
-    else if (category !== 'modelos' && brand !== "" && model === "") {
+    else if (category !== 'Modelo' && brand !== "" && model === "") {
         return ""
     }
 

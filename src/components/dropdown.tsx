@@ -19,7 +19,7 @@ export default function Dropdown(props: { category: Categories }) {
 
   async function getRequestData() {
 
-    if (props.category === 'modelos') {
+    if (props.category === 'Modelo') {
       const response = await getVehicleData(queryParams);
       setVehicleData(response.modelos ? response.modelos : [])
     }
@@ -41,7 +41,7 @@ export default function Dropdown(props: { category: Categories }) {
   return (
     <div key={key}>
       <FormControl sx={{ m: 1, minWidth: 120, width: 400 }} size="small" disabled={!vehicleData.length && true}>
-        <InputLabel id="dropdown-label">{props.category}</InputLabel>
+        <InputLabel id="dropdown-label">{`Selecionar ${props.category}`}</InputLabel>
         <Select
           labelId="dropdown-label"
           id="dropdown"

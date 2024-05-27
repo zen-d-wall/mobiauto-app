@@ -3,7 +3,7 @@ export interface Brand {
     nome: string;
 }
 
-export type Categories = 'marcas' | 'modelos' | 'anos';
+export type Categories = 'Marca' | 'Modelo' | 'Ano';
 
 export interface Car {
     TipoVeiculo: number
