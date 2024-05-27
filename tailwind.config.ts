@@ -7,6 +7,10 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    backgroundColor: theme => ({
+      'resultbg': '#ccfbf1',
+      'pricepill': '#14b8a6',
+     }),
     extend: {
     },
   },
