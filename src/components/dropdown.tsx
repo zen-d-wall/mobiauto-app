@@ -40,7 +40,7 @@ export default function Dropdown(props: { category: Categories }) {
 
   return (
     <div key={key}>
-      <FormControl sx={{ m: 1, minWidth: 120, width: 400 }} size="small" disabled={!vehicleData.length && true}>
+      <FormControl sx={{ m: 1, minWidth: 120, width: 320 }} size="small" disabled={!vehicleData.length && true}>
         <InputLabel id="dropdown-label">{`Selecionar ${props.category}`}</InputLabel>
         <Select
           labelId="dropdown-label"
