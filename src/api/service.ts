@@ -5,7 +5,7 @@ export async function getVehicleData(queryParams: string) {
         return []
     }
 
-    const res = await fetch(`https://parallelum.com.br/fipe/api/v1/carros/${queryParams}`, { mode: 'no-cors' })
+    const res = await fetch(`https://parallelum.com.br/fipe/api/v1/carros/${queryParams}`)
 
     if (!res.ok) {
         console.log('Error')
