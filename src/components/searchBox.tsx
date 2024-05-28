@@ -3,14 +3,28 @@
 import { useContext, useEffect, useState } from "react";
 import Dropdown from "./dropdown";
 import { UserPreferenceContext } from "@/context/userPreferences";
-import SearchButton from "./searchButton";
+import NavigateButton from "./navigateButton";
+import { getVehicleData } from "@/api/service";
 
 export default function SearchBox() {
     const [brandKey, setBrandKey] = useState<number>(0)
     const [modelKey, setModelKey] = useState<number>(0)
     const [yearKey, setYearKey] = useState<number>(0)
 
-    const { brand, model, year } = useContext(UserPreferenceContext)
+    const { brand, model, year, setCar, setLoading } = useContext(UserPreferenceContext)
+
+    async function requestData(queryParams: string) {
+        setLoading(true)
+        const response = await getVehicleData(queryParams);
+        setCar(response);
+        setLoading(false)
+    }
+
+    function handleButtonClick() {
+        const queryParams = `marcas/${brand}/modelos/${model}/anos/${year}`
+
+        requestData(queryParams);
+    }
 
     useEffect(() => {
         setBrandKey(brandKey + 1)
@@ -38,7 +52,7 @@ export default function SearchBox() {
                         <Dropdown category="Ano" />
                     </div>
                 )}
-                <SearchButton label="Consultar preço" />
+                <NavigateButton label="Consultar preço" route="/result" disabled={year ? false : true} handleOnClick={handleButtonClick}/>
             </div>
         </div>
     )

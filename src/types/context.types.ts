@@ -9,4 +9,6 @@ export interface UserPreferencesContext {
     setYear: React.Dispatch<React.SetStateAction<string>>;
     car: Car;
     setCar: React.Dispatch<React.SetStateAction<Car>>
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

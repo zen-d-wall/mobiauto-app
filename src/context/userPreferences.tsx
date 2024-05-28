@@ -9,6 +9,7 @@ export default function UserPreferencesProvider({ children }: any) {
     const [model, setModel] = useState<string>("")
     const [year, setYear] = useState<string>("")
     const [car, setCar] = useState<Car>({} as Car)
+    const [loading, setLoading] = useState<boolean>(false)
 
     return (
         <UserPreferenceContext.Provider
@@ -20,7 +21,9 @@ export default function UserPreferencesProvider({ children }: any) {
                 year,
                 setYear,
                 car,
-                setCar
+                setCar,
+                loading,
+                setLoading
             }}
         >
             {children}
